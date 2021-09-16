@@ -106,13 +106,14 @@
 
       /* --- find tags wrapper */
       const wrapperList = article.querySelector(optArticleTagsSelector);
+      console.log('WRAPPER LIST', wrapperList);
 
       /* --- make html variable with empty string */
       let html = '';
 
       /* --- get tags from data-tags attribute */
       const articleTags = article.getAttribute('data-tags');
-
+      console.log('ARTICLE TAGS', articleTags);
       /* --- split tags into array */
       const articleTagsArray = articleTags.split(' ');
 
@@ -150,19 +151,15 @@
 
       /* make new constant named "clickedElement" and give it the value of "this" */
       const clickedElement = this;
-      console.log('ELEMENT WAS CLICKED', clickedElement);
 
       /* make a new constant "href" and read the attribute "href" of the clicked element */
       const href = clickedElement.getAttribute('href');
-      console.log('SHOW ME THIS HREF', href);
 
       /* make a new constant "tag" and extract tag from the "href" constant */
       const tag = href.replace('#tag-', '');
-      console.log('SHOW TAG', tag);
 
       /* find all tag links with class active */
       const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
-      console.log('SHOW ACTIVE TAGS', activeTagLinks);
 
       /* START LOOP: for each active tag link */
       for(let activeTagLink of activeTagLinks){
@@ -175,7 +172,6 @@
 
       /* find all tag links with "href" attribute equal to the "href" constant */
       const tagHrefLinks = document.querySelectorAll('a[href="' + href + '"]');
-      console.log('SHOW ACTIVE TAGS', tagHrefLinks);
 
       /* START LOOP: for each found tag link */
       for(let tagHrefLink of tagHrefLinks){
@@ -187,7 +183,7 @@
       }
 
       /* execute function "generateTitleLinks" with article selector as argument */
-
+      generateTitleLinks('[data-tags~="' + tag + '"]');
 
     }
 
